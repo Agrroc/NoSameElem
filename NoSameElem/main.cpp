@@ -14,6 +14,7 @@ typedef struct LNode{
     struct LNode *next;
 }LNode;
 
+//输入一串字符串，使其中没有相同元素，并打印
 void creatNoSameElem(LNode *&head)
 {
     head=(LNode *)malloc(sizeof(LNode));
@@ -29,14 +30,17 @@ void creatNoSameElem(LNode *&head)
         printf("请输入字母：");
 //        scanf("%c",&ch);
         std::cin>>ch;
-        p=head->next;
+        p=head->next;   //每次输入节点，p都指向链表的第一个节点
         while (p!=NULL) {
+            //遍历链表，p指针指向遍历到的当前节点位置，直到链表结束
             if (p->data==ch) {
+                //从前往后遍历节点，当输入的字符和当前遍历的节点相同时，跳出循环
                 break;
             }
-            p=p->next;
+            p=p->next;  //当两者不等时，后移一位
         }
         if (p==NULL) {
+            //用头插的方式添加节点
             p=(LNode *)malloc(sizeof(LNode));
             p->data=ch;
             p->next=head->next;
